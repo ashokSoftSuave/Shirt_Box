@@ -1,12 +1,16 @@
-<div>
-    <div class="header-container">
-
-    </div>
-    <div>
-        <router-outlet></router-outlet>
-    </div>
-    <div class = "footer-container">
-        <app-footer></app-footer>
-    </div>
+<div class="app-container">
+  <!-- Header spans full width -->
+  <header>
+    <app-header></app-header>
+  </header>
+  
+  <!-- Main content with responsive side spacing -->
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+  
+  <!-- Footer spans full width -->
+  <div class="footer-container">
+    <app-footer></app-footer>
+  </div>
 </div>
-
