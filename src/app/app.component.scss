@@ -1,4 +1,29 @@
 .footer-container {
     background-color: #1f1f1f;
     color: white;
-}   
+}
+
+// Remove any default spacing from the app component
+:host {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+// Ensure no spacing around the header
+app-header {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+// Remove any spacing from router outlet
+router-outlet {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.main-content {
+    background-color: orange;
+}
