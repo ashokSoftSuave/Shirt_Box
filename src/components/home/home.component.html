@@ -1,1 +1,31 @@
-<p>home works!</p>
+<main class="container mt-3">
+    <!-- Filters -->
+    <div class="filters d-flex justify-content-between align-items-center mb-4">
+        <!-- Left Navigation -->
+        <div class="nav-links d-flex gap-3">
+            <a href="#" class="active">All Products</a>
+            <a href="#">Women</a>
+            <a href="#">Men</a>
+            <a href="#">Bag</a>
+            <a href="#">Shoes</a>
+            <a href="#">Watches</a>
+        </div>
+
+        <!-- Right Buttons -->
+        <div class="d-flex gap-2">
+            <button class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-filter"></i> Filter
+            </button>
+            <button class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-search"></i> Search
+            </button>
+        </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="d-flex flex-wrap align-items-center gap-5">
+        <div *ngFor="let product of products" style="width: 18rem;">
+            <app-product-card [products]="product"></app-product-card>
+        </div>
+    </div>
+</main>
