@@ -1,26 +1,42 @@
-<div class = "footer-main-container">
-    <div class = "footer-content">
+<div class="footer-main-container">
+    <div class="footer-sub-content">
         <h2>Categories</h2>
-        <div *ngFor = "let category of categoriesList" class = "list-content">
+        <div *ngFor="let category of categoriesList" class="list-content">
             <h4 (click)="onCategoriesClick(category)">{{ category }}</h4>
         </div>
     </div>
-    <div class = "footer-content">
+    <div class="footer-content">
         <h2>Help</h2>
-        <div *ngFor = "let help of helpList" class = "list-content">
-            <h4 (click)="onHelpClick(help)" >{{ help }}</h4>
+        <div *ngFor="let help of helpList" class="list-content">
+            <h4 (click)="onHelpClick(help)">{{ help }}</h4>
         </div>
     </div>
-    <div class = "footer-content">
+    <div class="footer-content">
         <h2>GET IN TOUCH</h2>
-        <h4>{{ address }}</h4>
-        <div class = "imageClass">
-            
+        <h4 class="address">{{ address }}</h4>
+        <div class="social-icons">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-pinterest-p"></i>
         </div>
     </div>
-    <div class = "footer-content">
-        <h2>NEWSLETTER</h2>
-        <input type = "text" placeholder="email@emample.com" >
+    <div class="footer-content">
+        <h2>NEWS LETTER</h2>
+        <input type="text" placeholder="email@emample.com">
         <button>SUBSCRIBE</button>
     </div>
+</div>
+<div class="footer-bottom">
+    <div class="payment-icons">
+        <img src="assets/paypal.png" alt="card" />
+        <img src="assets/visa.png" alt="card" />
+        <img src="assets/blue_card.png" alt="card" />
+        <img src="assets/card.png" alt="card" />
+        <img src="assets/docover.png" alt="card" />
+    </div>
+    <p>
+        Copyright ©2025 All rights reserved | Made with
+        <i class="fa fa-heart"></i> by
+        <span>Ashok</span>
+    </p>
 </div>
