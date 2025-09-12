@@ -1,0 +1,19 @@
+.footer-main-container{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-content {
+    width: 15%;
+}
+
+.list-content {
+    color: #cccccc;
+    cursor: pointer;
+}
+
+.list-content:hover {
+    color: rgb(119, 119, 219);
+}
