@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../model/product.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { QuickviewComponent } from '../quickview/quickview.component'; 
+
 
 @Component({
   selector: 'app-product-card',
@@ -12,11 +15,15 @@ export class ProductCardComponent {
   public isFavorite : boolean = false;
   public isMouseOver : boolean = false;
   @Input() products!: Product;
+  constructor(private modalService: NgbModal) {}
 
 
   toggleFavorite() {
-    console.log("test");
-    
     this.isFavorite = !this.isFavorite;
+  }
+
+  openQuickView(product: Product) {
+    const modalRef = this.modalService.open(QuickviewComponent, { size: 'lg', centered: true });
+    modalRef.componentInstance.product = product;
   }
 }

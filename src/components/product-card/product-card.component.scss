@@ -1,7 +1,7 @@
 .quick-view-btn {
   position: absolute;
   left: 50%;
-  bottom: -60px; /* start hidden below image */
+  bottom: -60px;
   transform: translateX(-50%);
   opacity: 0;
   background-color: #fff;
@@ -13,7 +13,7 @@
 }
 
 .position-relative:hover .quick-view-btn {
-  bottom: 20px; /* slides up inside image */
+  bottom: 20px;
   opacity: 1;
 }
 
@@ -21,3 +21,4 @@
   background-color: #000;
   color: #fff;
 }
+
