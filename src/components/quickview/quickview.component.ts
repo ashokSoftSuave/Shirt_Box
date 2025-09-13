@@ -4,7 +4,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { addToBag, incrementBagQty, decrementBagQty } from '../../Store/product/product.actions';
 import { Store } from '@ngrx/store';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-quickview',
   imports: [CommonModule, FormsModule],
@@ -21,7 +21,6 @@ export class QuickviewComponent {
   @Input() product: any;
   selectedSize: string = '';
   selectedColor: string = '';
-  showSuccessPopup = false;
   successMessage = '';
 
   quantity = 1;
@@ -52,10 +51,15 @@ export class QuickviewComponent {
       return;
     }
     this.store.dispatch(addToBag({ productId: this.product.id, qty: this.quantity }));
-    this.successMessage = `Product ${this.product.productName} added successfully!`;
-    this.showSuccessPopup = true;
+    this.successMessage = `Product ${this.product.productName} added too cart successfully!`;
+    this.closePopup();
   }
+
   closePopup() {
-    this.showSuccessPopup = false;
+    Swal.fire({
+      icon: 'success',
+      text: this.successMessage,
+      confirmButtonText: 'OK',
+    });
   }
 }

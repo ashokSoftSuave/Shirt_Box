@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart-totals',
@@ -17,13 +18,20 @@ export class CartTotalsComponent {
   postcode: string = '';
 
   updateTotals() {
-    // Example logic – you can connect to backend/shipping service
     console.log('Updating totals with:', this.country, this.state, this.postcode);
     this.total = this.subtotal + 10; // add flat shipping fee for demo
   }
 
   proceedToCheckout() {
     console.log('Proceeding to checkout with:', this.total);
-    // redirect or call checkout API
+  }
+
+  openCheckoutModal() {
+    Swal.fire({
+      icon: 'success',
+      title: 'Payment Successful!',
+      text: 'Your payment has been successfully processed.',
+      confirmButtonText: 'OK',
+    });
   }
 }
