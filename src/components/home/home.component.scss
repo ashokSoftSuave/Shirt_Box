@@ -1,8 +1,31 @@
+// Filter hover and active color styles
+.filter-item li,
+.color-radio-label,
+.tag-badge {
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+
+.filter-item li:hover,
+.color-radio-label:hover,
+.tag-badge:hover {
+  color: #1976d2;
+}
+
+.active-filter {
+    color: #1976d2;
+
+}
+
+.color-radio-label input[type="radio"] {
+  margin-right: 6px;
+}
+
 .nav-links span {
   text-decoration: none;
   color: #333;
   padding-bottom: 4px;
-  cursor: pointer;      
+  cursor: pointer;
   transition: 0.2s;
 }
 
@@ -13,4 +36,49 @@
 .nav-links span.active {
   font-weight: bold;
   border-bottom: 2px solid rgb(132, 129, 129);
+}
+
+.filter-box {
+  background-color: #F2F2F2;
+}
+
+
+.tag-pill {
+  border: 1.2px solid #bdbdbd;
+  border-radius: 16px;
+  padding: 3px 12px;
+  color: #757575;
+  background: #fff;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: border 0.2s, color 0.2s, background 0.2s;
+  display: inline-block;
+  line-height: 1.2;
+}
+.tag-pill.active-pill {
+  border: 1.5px solid #1976d2;
+  color: #1976d2;
+  background: #e3f2fd;
+}
+.tag-pill:hover {
+  border: 1.5px solid #1976d2;
+  color: #1976d2;
+  background: #f5faff;
+}
+
+.clear-btn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1rem;
+  padding: 0 8px;
+  cursor: pointer;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.clear-btn:hover {
+  color: #d32f2f;
+  text-decoration: underline;
 }

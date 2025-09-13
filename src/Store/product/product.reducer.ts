@@ -1,26 +1,53 @@
-// store/product.reducer.ts
 import { createReducer, on } from '@ngrx/store';
-import { loadProducts, setCategoryFilter } from './product.actions';
 import { Product } from '../../model/product.model';
+import {
+  loadProducts,
+  setCategoryFilter,
+  setSearchTerm,
+  setPriceRange,
+  setColorFilter,
+  setTagFilter,
+  setSortBy,
+  clearFilters,
+  SortByType,
+} from './product.actions';
 
 export interface ProductState {
   products: Product[];
   selectedCategory: string;
+  searchTerm: string;
+  priceRange: [number, number] | null;
+  color: string | null;
+  tag: string | null;
+  sortBy: SortByType;
 }
 
 export const initialState: ProductState = {
   products: [],
   selectedCategory: 'all',
+  searchTerm: '',
+  priceRange: null,
+  color: null,
+  tag: null,
+  sortBy: 'default',
 };
 
 export const productReducer = createReducer(
   initialState,
-  on(loadProducts, (state, { products }) => ({
-    ...state,
-    products,
-  })),
-  on(setCategoryFilter, (state, { category }) => ({
-    ...state,
-    selectedCategory: category,
+  on(loadProducts, (s, { products }) => ({ ...s, products })),
+  on(setCategoryFilter, (s, { category }) => ({ ...s, selectedCategory: category })),
+  on(setSearchTerm, (s, { term }) => ({ ...s, searchTerm: term })),
+  on(setPriceRange, (s, { range }) => ({ ...s, priceRange: range })),
+  on(setColorFilter, (s, { color }) => ({ ...s, color })),
+  on(setTagFilter, (s, { tag }) => ({ ...s, tag })),
+  on(setSortBy, (s, { sortBy }) => ({ ...s, sortBy })),
+  on(clearFilters, (s) => ({
+    ...s,
+    selectedCategory: 'all',
+    searchTerm: '',
+    priceRange: null,
+    color: null,
+    tag: null,
+    sortBy: 'default'as const ,
   }))
 );
