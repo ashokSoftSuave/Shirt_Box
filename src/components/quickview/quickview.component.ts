@@ -40,13 +40,11 @@ export class QuickviewComponent {
     if (!this.selectedSize || !this.selectedColor) {
       return;
     }
-    this.cardDetailsService.setCardDetails({ ...this.product, quantity: this.quantity, size: this.selectedSize, colur: this.selectedColor });
+    this.cardDetailsService.setCardDetails({ ...this.product, quantity: this.quantity, size: this.selectedSize, color: this.selectedColor });
     this.successMessage = `Product ${this.product.productName} added successfully!`;
     this.showSuccessPopup = true;
-    setTimeout(() => {
+  }
+  closePopup() {
     this.showSuccessPopup = false;
-    this.activeModal.close('Close click');
-  }, 1800);
-    
   }
 }
