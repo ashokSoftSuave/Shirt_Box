@@ -7,7 +7,9 @@ import { Product } from '../../model/product.model';
 import { Observable } from 'rxjs';
 import {
   selectFilteredProducts,
-  selectSelectedCategory
+  selectSelectedCategory,
+  selectWishlist,
+  selectShowWishlist
 } from '../../Store/product/product.selectors';
 import { Store } from '@ngrx/store';
 import {
@@ -54,6 +56,8 @@ import {
   selectedColor: string | null = null;
   selectedTag: string | null = null;
   products$: Observable<Product[]>;
+  wishlist$: Observable<Product[]>;
+  showWishlist$: Observable<boolean>;
   selectedCategory$: Observable<string>;
 
   // local UI state
@@ -63,6 +67,8 @@ import {
 
   constructor(private store: Store) {
     this.products$ = this.store.select(selectFilteredProducts);
+    this.wishlist$ = this.store.select(selectWishlist);
+    this.showWishlist$ = this.store.select(selectShowWishlist);
     this.selectedCategory$ = this.store.select(selectSelectedCategory);
   }
 

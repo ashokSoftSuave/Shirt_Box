@@ -11,7 +11,8 @@ import {
   clearFilters,
   SortByType,
   toggleFavorite,
-  showLikedItems,
+  showWishlist,
+  hideWishlist
 } from './product.actions';
 
 export interface ProductState {
@@ -22,6 +23,7 @@ export interface ProductState {
   color: string | null;
   tag: string | null;
   sortBy: SortByType;
+  showWishlist: boolean;
 }
 
 export const initialState: ProductState = {
@@ -32,6 +34,7 @@ export const initialState: ProductState = {
   color: null,
   tag: null,
   sortBy: 'default',
+  showWishlist: false,
 };
 
 export const productReducer = createReducer(
@@ -58,8 +61,6 @@ export const productReducer = createReducer(
     );
     return { ...s, products: updatedProducts };
   }),
-  on(showLikedItems, (s) => {
-    const likedProducts = s.products.filter(product => product.favourite);
-    return { ...s, products: likedProducts };
-  })
+  on(showWishlist, (s) => ({ ...s, showWishlist: true })),
+  on(hideWishlist, (s) => ({ ...s, showWishlist: false })),
 );

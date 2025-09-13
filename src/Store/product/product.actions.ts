@@ -1,3 +1,5 @@
+export const showWishlist = createAction('[Product] Show Wishlist');
+export const hideWishlist = createAction('[Product] Hide Wishlist');
 import { createAction, props } from '@ngrx/store';
 import { Product } from '../../model/product.model';
 
@@ -43,8 +45,5 @@ export const toggleFavorite = createAction(
   props<{ productId: number }>()
 );
 
-export const showLikedItems = createAction(
-  '[Product] Show Liked Items'
-);
 
 export const clearFilters = createAction('[Product] Clear Filters');

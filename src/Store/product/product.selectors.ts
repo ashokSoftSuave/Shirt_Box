@@ -1,7 +1,14 @@
+
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ProductState } from './product.reducer';
 
 export const selectProductState = createFeatureSelector<ProductState>('products');
+
+export const selectShowWishlist = createSelector(
+  selectProductState,
+  (s) => s.showWishlist
+);
+
 
 export const selectAllProducts = createSelector(
   selectProductState,
@@ -100,6 +107,15 @@ export const selectFilteredProducts = createSelector(
       result = result.sort((a, b) => b.price - a.price);
     }
 
+    return result;
+  }
+);
+
+
+export const whishlistcount = createSelector(
+  selectAllProducts,
+  (products) => {
+    let result = products.filter(p => p.favourite).length;
     return result;
   }
 );

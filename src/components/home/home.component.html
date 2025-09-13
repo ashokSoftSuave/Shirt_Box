@@ -173,12 +173,34 @@
 
   <!-- Product grid -->
   <div class="d-flex flex-wrap align-items-center gap-5">
-    <div
-      *ngFor="let product of products$ | async"
-      style="width: 18rem"
-      [@productAnimation]
-    >
-      <app-product-card [products]="product"></app-product-card>
-    </div>
+    <ng-container *ngIf="!(showWishlist$ | async); else wishlistBlock">
+      <div
+        *ngFor="let product of products$ | async"
+        style="width: 18rem"
+        [@productAnimation]
+      >
+        <app-product-card [products]="product"></app-product-card>
+      </div>
+    </ng-container>
+    <ng-template #wishlistBlock>
+      <div
+        *ngIf="(wishlist$ | async)?.length; else emptyWishlist"
+        class="d-flex flex-wrap align-items-center gap-5"
+      >
+        <div
+          *ngFor="let product of wishlist$ | async"
+          style="width: 18rem"
+          [@productAnimation]
+        >
+          <app-product-card [products]="product"></app-product-card>
+        </div>
+      </div>
+      <ng-template #emptyWishlist>
+        <div class="text-center w-100 text-muted py-5">
+          <i class="far fa-heart fa-2x mb-2"></i><br />
+          No products in your wishlist yet.
+        </div>
+      </ng-template>
+    </ng-template>
   </div>
 </main>
