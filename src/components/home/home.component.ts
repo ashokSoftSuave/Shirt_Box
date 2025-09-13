@@ -42,104 +42,121 @@ export class HomeComponent {
 
   ngOnInit(): void {
     // Instead of hardcoding, you can fetch from API later
-    const sampleProducts: Product[] =[
+ const sampleProducts: Product[] = [
   {
-    "productName": "Esprit Ruffle Shirt",
-    "price": 16.64,
-    "category": "women",
-    "image": "https://themewagon.github.io/cozastore/images/product-01.jpg"
+    id: 1,
+    productName: "Esprit Ruffle Shirt",
+    price: 16.64,
+    category: "women",
+    image: "https://themewagon.github.io/cozastore/images/product-01.jpg"
   },
   {
-    "productName": "Herschel supply",
-    "price": 35.31,
-    "category": "women",
-    "image": "https://themewagon.github.io/cozastore/images/product-02.jpg"
+    id: 2,
+    productName: "Herschel supply",
+    price: 35.31,
+    category: "women",
+    image: "https://themewagon.github.io/cozastore/images/product-02.jpg"
   },
   {
-    "productName": "Only Check Trouser",
-    "price": 25.50,
-    "category": "men",
-    "image": "https://themewagon.github.io/cozastore/images/product-03.jpg"
+    id: 3,
+    productName: "Only Check Trouser",
+    price: 25.50,
+    category: "men",
+    image: "https://themewagon.github.io/cozastore/images/product-03.jpg"
   },
   {
-    "productName": "Front Pocket Jumper",
-    "price": 34.75,
-    "category": "women",
-    "image": "https://themewagon.github.io/cozastore/images/product-04.jpg"
+    id: 4,
+    productName: "Front Pocket Jumper",
+    price: 34.75,
+    category: "women",
+    image: "https://themewagon.github.io/cozastore/images/product-04.jpg"
   },
   {
-    "productName": "Vintage Inspired Classic",
-    "price": 93.20,
-    "category": "women",
-    "image": "https://themewagon.github.io/cozastore/images/product-05.jpg"
+    id: 5,
+    productName: "Vintage Inspired Classic",
+    price: 93.20,
+    category: "women",
+    image: "https://themewagon.github.io/cozastore/images/product-05.jpg"
   },
   {
-    "productName": "Vintage Inspired Classic",
-    "price": 93.20,
-    "category": "watch",
-    "image": "https://themewagon.github.io/cozastore/images/product-06.jpg"
+    id: 6,
+    productName: "Vintage Inspired Classic",
+    price: 93.20,
+    category: "watch",
+    image: "https://themewagon.github.io/cozastore/images/product-06.jpg"
   },
   {
-    "productName": "Shirt in Stretch Cotton",
-    "price": 52.66,
-    "category": "women",
-    "image": "https://themewagon.github.io/cozastore/images/product-07.jpg"
+    id: 7,
+    productName: "Shirt in Stretch Cotton",
+    price: 52.66,
+    category: "women",
+    image: "https://themewagon.github.io/cozastore/images/product-07.jpg"
   },
   {
-    "productName": "Pieces Metallic Printed",
-    "price": 18.96,
-    "category": "women",
-    "image": "https://themewagon.github.io/cozastore/images/product-08.jpg"
+    id: 8,
+    productName: "Pieces Metallic Printed",
+    price: 18.96,
+    category: "women",
+    image: "https://themewagon.github.io/cozastore/images/product-08.jpg"
   },
   {
-    "productName": "Converse All Star Hi Plimsolls",
-    "price": 75.00,
-    "category": "shoes",
-    "image": "https://themewagon.github.io/cozastore/images/product-09.jpg"
+    id: 9,
+    productName: "Converse All Star Hi Plimsolls",
+    price: 75.00,
+    category: "shoes",
+    image: "https://themewagon.github.io/cozastore/images/product-09.jpg"
   },
   {
-    "productName": "Femme T-Shirt In Stripe",
-    "price": 25.85,
-    "category": "women",
-    "image": "https://themewagon.github.io/cozastore/images/product-10.jpg"
+    id: 10,
+    productName: "Femme T-Shirt In Stripe",
+    price: 25.85,
+    category: "women",
+    image: "https://themewagon.github.io/cozastore/images/product-10.jpg"
   },
   {
-    "productName": "Herschel supply",
-    "price": 63.16,
-    "category": "men",
-    "image": "https://themewagon.github.io/cozastore/images/product-11.jpg"
+    id: 11,
+    productName: "Herschel supply",
+    price: 63.16,
+    category: "men",
+    image: "https://themewagon.github.io/cozastore/images/product-11.jpg"
   },
   {
-    "productName": "Herschel supply belt",
-    "price": 50.00,
-    "category": "men",
-    "image": "https://themewagon.github.io/cozastore/images/product-12.jpg"
+    id: 12,
+    productName: "Herschel supply belt",
+    price: 50.00,
+    category: "men",
+    image: "https://themewagon.github.io/cozastore/images/product-12.jpg"
   },
   {
-    "productName": "T-Shirt with Sleeve",
-    "price": 86.85,
-    "category": "women",
-    "image": "https://themewagon.github.io/cozastore/images/product-13.jpg"
+    id: 13,
+    productName: "T-Shirt with Sleeve",
+    price: 86.85,
+    category: "women",
+    image: "https://themewagon.github.io/cozastore/images/product-13.jpg"
   },
   {
-    "productName": "Pretty Little Thing",
-    "price": 54.79,
-    "category": "women",
-    "image": "https://themewagon.github.io/cozastore/images/product-14.jpg"
+    id: 14,
+    productName: "Pretty Little Thing",
+    price: 54.79,
+    category: "women",
+    image: "https://themewagon.github.io/cozastore/images/product-14.jpg"
   },
   {
-    "productName": "Mini Silver Mesh Watch",
-    "price": 86.85,
-    "category": "watch",
-    "image": "https://themewagon.github.io/cozastore/images/product-15.jpg"
+    id: 15,
+    productName: "Mini Silver Mesh Watch",
+    price: 86.85,
+    category: "watch",
+    image: "https://themewagon.github.io/cozastore/images/product-15.jpg"
   },
   {
-    "productName": "Square Neck Back",
-    "price": 29.64,
-    "category": "women",
-    "image": "https://themewagon.github.io/cozastore/images/product-16.jpg"
+    id: 16,
+    productName: "Square Neck Back",
+    price: 29.64,
+    category: "women",
+    image: "https://themewagon.github.io/cozastore/images/product-16.jpg"
   }
 ];
+
     this.store.dispatch(loadProducts({ products: sampleProducts }));
   }
 
