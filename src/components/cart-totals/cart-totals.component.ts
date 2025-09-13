@@ -22,11 +22,8 @@ export class CartTotalsComponent {
     this.total = this.subtotal + 10; // add flat shipping fee for demo
   }
 
-  proceedToCheckout() {
-    console.log('Proceeding to checkout with:', this.total);
-  }
 
-  openCheckoutModal() {
+  proceedToPay() {
     Swal.fire({
       icon: 'success',
       title: 'Payment Successful!',
