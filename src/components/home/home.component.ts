@@ -25,7 +25,7 @@ import {
 
 @Component({
   selector: 'app-home',
-  standalone: true, // only if using standalone components; remove if not
+  standalone: true,
   imports: [ProductCardComponent, CommonModule, FormsModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],

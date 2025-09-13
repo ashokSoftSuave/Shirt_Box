@@ -39,11 +39,11 @@ export class ViewCartComponent implements OnInit {
   }
 
   updateCart() {
-    console.log('Cart updated', this.cartItems);
+    // Implement cart update logic if needed
   }
 
   applyCoupon() {
-    console.log('Coupon applied:', this.couponCode);
+    // Implement coupon logic if needed
   }
 
 }

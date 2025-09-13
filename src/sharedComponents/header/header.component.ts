@@ -43,8 +43,6 @@ export class HeaderComponent implements OnInit {
 
 
   openCart() {
-    console.log('open cart');
-    
     this.modalService.open(CartDetailsComponent, {
       backdrop: true,
       scrollable: true,

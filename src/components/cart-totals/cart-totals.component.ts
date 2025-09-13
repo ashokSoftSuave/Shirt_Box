@@ -17,13 +17,11 @@ export class CartTotalsComponent {
   postcode: string = '';
 
   updateTotals() {
-    // Example logic – you can connect to backend/shipping service
-    console.log('Updating totals with:', this.country, this.state, this.postcode);
+    // Implement totals update logic if needed
     this.total = this.subtotal + 10; // add flat shipping fee for demo
   }
 
   proceedToCheckout() {
-    console.log('Proceeding to checkout with:', this.total);
-    // redirect or call checkout API
+    // Implement checkout logic if needed
   }
 }
