@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Product } from '../../models/product.model';
 import { selectBagItems } from '../../Store/product/product.selectors';
 import { removeFromBag } from '../../Store/product/product.actions';
@@ -14,16 +15,24 @@ import { removeFromBag } from '../../Store/product/product.actions';
   templateUrl: './cart-details.component.html',
   styleUrl: './cart-details.component.scss'
 })
-export class CartDetailsComponent implements OnInit {
+export class CartDetailsComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   isOpen = false;
   cartItems$!: Observable<Product[]>;
   cartItems: Product[] = [];
 
   ngOnInit() {
     this.cartItems$ = this.store.select(selectBagItems);
-    this.cartItems$.subscribe(items => {
-      this.cartItems = items;
-    });
+    this.cartItems$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(items => {
+        this.cartItems = items;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
     
 

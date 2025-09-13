@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CartTotalsComponent } from '../cart-totals/cart-totals.component';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Product } from '../../models/product.model';
 import { Store } from '@ngrx/store';
 import { selectBagItems } from '../../Store/product/product.selectors';
@@ -14,7 +15,8 @@ import { incrementBagQty, decrementBagQty } from '../../Store/product/product.ac
   templateUrl: './view-cart.component.html',
   styleUrl: './view-cart.component.scss'
 })
-export class ViewCartComponent implements OnInit {
+export class ViewCartComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   cartItems$!: Observable<Product[]>;
   cartItems: Product[] = [];
 
@@ -23,9 +25,16 @@ export class ViewCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartItems$ = this.store.select(selectBagItems);
-    this.cartItems$.subscribe(items => {
-      this.cartItems = items;
-    });
+    this.cartItems$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(items => {
+        this.cartItems = items;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   increaseQuantity(item: Product) {

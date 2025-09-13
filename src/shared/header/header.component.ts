@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CartDetailsComponent } from '../../components/cart-details/cart-details.component';
 import { Store } from '@ngrx/store';
 import { Product } from '../../models/product.model';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { bagcount, whishlistcount } from '../../Store/product/product.selectors';
 import { showWishlist, hideWishlist } from '../../Store/product/product.actions';
 import { RouterModule } from '@angular/router';
@@ -14,7 +15,8 @@ import { RouterModule } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   cartItemCount = 4;
   wishlistCount = 0;
   wishlist$: Observable<number>;
@@ -27,8 +29,17 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.wishlist$.subscribe(count => this.wishlistCount = count);
-    this.bagCount$.subscribe(count => this.cartItemCount = count);
+    this.wishlist$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(count => this.wishlistCount = count);
+    this.bagCount$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(count => this.cartItemCount = count);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   openWishlist() {

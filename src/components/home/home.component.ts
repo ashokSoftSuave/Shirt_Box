@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Product } from '../../models/product.model';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import {
   selectFilteredProducts,
   selectSelectedCategory,
@@ -50,7 +51,8 @@ import {
     ])
   ],
 })
-  export class HomeComponent {
+  export class HomeComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   selectedSort: 'default' | 'low-high' | 'high-low' = 'default';
   selectedPrice: { min: number, max: number } | null = null;
   selectedColor: string | null = null;
@@ -73,7 +75,7 @@ import {
   }
 
 
-    ngOnInit(): void {
+  ngOnInit(): void {
    const sampleProducts: Product[] = [
     {
       id: 1,
@@ -221,7 +223,14 @@ import {
     }
   ];
 
-     this.store.dispatch(loadProducts({ products: sampleProducts }));
+  this.store.dispatch(loadProducts({ products: sampleProducts }));
+  // Example: subscribe to something with takeUntil
+  // this.products$.pipe(takeUntil(this.destroy$)).subscribe();
+ }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   filterProducts(category: string) {
