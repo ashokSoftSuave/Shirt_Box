@@ -7,9 +7,10 @@ import { Product } from '../../model/product.model';
 import { Observable } from 'rxjs';
 import { bagcount, whishlistcount } from '../../Store/product/product.selectors';
 import { showWishlist, hideWishlist } from '../../Store/product/product.actions';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-header',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
