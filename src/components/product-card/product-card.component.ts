@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Product } from '../../model/product.model';
+import { Product } from '../../models/product.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { QuickviewComponent } from '../quickview/quickview.component'; 
 import { Store } from '@ngrx/store';

@@ -15,7 +15,7 @@ export const setBagQty = createAction(
 export const showWishlist = createAction('[Product] Show Wishlist');
 export const hideWishlist = createAction('[Product] Hide Wishlist');
 import { createAction, props } from '@ngrx/store';
-import { Product } from '../../model/product.model';
+import { Product } from '../../models/product.model';
 
 export type SortByType = 'default' | 'low-high' | 'high-low';
 

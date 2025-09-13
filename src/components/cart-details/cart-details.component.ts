@@ -4,7 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Product } from '../../model/product.model';
+import { Product } from '../../models/product.model';
 import { selectBagItems } from '../../Store/product/product.selectors';
 import { removeFromBag } from '../../Store/product/product.actions';
 

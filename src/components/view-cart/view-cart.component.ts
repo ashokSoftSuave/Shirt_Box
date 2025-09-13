@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CartTotalsComponent } from '../cart-totals/cart-totals.component';
 import { Observable } from 'rxjs';
-import { Product } from '../../model/product.model';
+import { Product } from '../../models/product.model';
 import { Store } from '@ngrx/store';
 import { selectBagItems } from '../../Store/product/product.selectors';
 import { incrementBagQty, decrementBagQty } from '../../Store/product/product.actions';

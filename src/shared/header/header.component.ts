@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CartDetailsComponent } from '../../components/cart-details/cart-details.component';
 import { Store } from '@ngrx/store';
-import { Product } from '../../model/product.model';
+import { Product } from '../../models/product.model';
 import { Observable } from 'rxjs';
 import { bagcount, whishlistcount } from '../../Store/product/product.selectors';
 import { showWishlist, hideWishlist } from '../../Store/product/product.actions';

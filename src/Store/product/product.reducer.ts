@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Product } from '../../model/product.model';
+import { Product } from '../../models/product.model';
 import {
   loadProducts,
   setCategoryFilter,
@@ -18,7 +18,7 @@ import {
   incrementBagQty,
   decrementBagQty,
   setBagQty
-} from './product.actions';
+} from '../../Store/product/product.actions';
 
 export interface ProductState {
   products: Product[];

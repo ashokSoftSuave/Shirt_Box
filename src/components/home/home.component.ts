@@ -3,7 +3,7 @@ import { ProductCardComponent } from '../product-card/product-card.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { Product } from '../../model/product.model';
+import { Product } from '../../models/product.model';
 import { Observable } from 'rxjs';
 import {
   selectFilteredProducts,
