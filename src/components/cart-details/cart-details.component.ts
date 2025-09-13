@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -9,7 +10,7 @@ import { removeFromBag } from '../../Store/product/product.actions';
 
 @Component({
   selector: 'app-cart-details',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './cart-details.component.html',
   styleUrl: './cart-details.component.scss'
 })
@@ -30,7 +31,7 @@ export class CartDetailsComponent implements OnInit {
     this.isOpen = true;
   }
 
-  constructor(public activeModal: NgbActiveModal,
+  constructor(public activeModal: NgbActiveModal,private router: Router,
     private store: Store  
   ) { }
 
@@ -44,5 +45,9 @@ export class CartDetailsComponent implements OnInit {
 
   removeFromCart(item: Product) {
     this.store.dispatch(removeFromBag({ productId: item.id }));
+  }
+  viewCart(){
+    this.router.navigate(['/cart']);
+    this.activeModal.dismiss();
   }
 }

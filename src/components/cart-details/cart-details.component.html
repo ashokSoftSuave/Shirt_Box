@@ -40,8 +40,9 @@
 
   <div class="cart-total fw-bold mb-3">Total: {{ getTotal() | currency }}</div>
 
-  <div class="cart-buttons d-flex">
-    <a routerLink="/cart" class="btn btn-dark flex-fill me-2">View Cart</a>
-    <a routerLink="/checkout" class="btn btn-primary flex-fill">Check Out</a>
-  </div>
+    <div class="cart-buttons d-flex">
+        <a routerLink="/cart"(click)="viewCart()" class="btn btn-dark flex-fill me-2">View Cart</a>
+        <a routerLink="/checkout" class="btn btn-primary flex-fill">Check Out</a>
+    </div>
+
 </div>
