@@ -7,6 +7,9 @@ export interface productDetails{
   price:number;
   category:string;
   image:string;
+  quantity?:number;
+  size?:string;
+  colur?:string;
 }
 
 @Component({
