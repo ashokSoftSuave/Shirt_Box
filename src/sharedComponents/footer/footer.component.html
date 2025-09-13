@@ -7,8 +7,7 @@
         <h6 class="fw-bold mb-3">CATEGORIES</h6>
         <ul class="list-unstyled">
           <li *ngFor="let category of categoriesList">
-            <a href="#" class="text-decoration-none text-light"
-               (click)="onCategoriesClick(category)">
+            <a href="#" class="text-decoration-none text-light" (click)="onCategoriesClick(category)">
               {{ category }}
             </a>
           </li>
@@ -20,8 +19,7 @@
         <h6 class="fw-bold mb-3">HELP</h6>
         <ul class="list-unstyled">
           <li *ngFor="let help of helpList">
-            <a href="#" class="text-decoration-none text-light"
-               (click)="onHelpClick(help)">
+            <a href="#" class="text-decoration-none text-light" (click)="onHelpClick(help)">
               {{ help }}
             </a>
           </li>
@@ -40,20 +38,16 @@
       </div>
 
       <!-- Newsletter -->
-      <div class="col-md-3 col-sm-6 mb-4">
+      <div class="col-md-3 col-sm-6 mb-4 newsletter-box">
         <h6 class="fw-bold mb-3">NEWSLETTER</h6>
-        <div class="d-flex">
-          <input type="email" class="form-control me-2"
-                 placeholder="email@example.com" />
-          <button class="btn btn-primary">SUBSCRIBE</button>
-        </div>
+        <input type="email" class="newsletter-input" placeholder="email@example.com" />
+        <button class="newsletter-btn">SUBSCRIBE</button>
       </div>
-
     </div>
   </div>
 
   <!-- Bottom Bar -->
-  <div class="bg-secondary text-center py-3 mt-4">
+  <div class="text-center py-3 mt-4">
     <div class="d-flex justify-content-center mb-2">
       <img src="assets/paypal.png" alt="PayPal" class="mx-2" height="25">
       <img src="assets/visa.png" alt="Visa" class="mx-2" height="25">
@@ -62,8 +56,8 @@
       <img src="assets/docover.png" alt="Discover" class="mx-2" height="25">
     </div>
     <p class="mb-0 small">
-      Copyright ©2025 All rights reserved | Made with 
-      <i class="fa fa-heart text-danger"></i> by 
+      Copyright ©2025 All rights reserved | Made with
+      <i class="fa fa-heart text-danger"></i> by
       <span class="fw-bold">Ashok</span>
     </p>
   </div>
