@@ -52,7 +52,7 @@ export const addToBag = createAction(
 
 export const removeFromBag = createAction(
   '[Product] Remove From Bag',
-  props<{ productId: number, qty: number }>()
+  props<{ productId: number }>()
 );
 
 export const clearFilters = createAction('[Product] Clear Filters');

@@ -74,7 +74,6 @@ import {
 
 
     ngOnInit(): void {
-      // Instead of hardcoding, you can fetch from API later
    const sampleProducts: Product[] = [
     {
       id: 1,
@@ -92,7 +91,7 @@ import {
       category: "bag",
       image: "https://themewagon.github.io/cozastore/images/product-02.jpg",
       favourite: false,
-      bag: true
+      bag: false
     },
     {
       id: 3,
@@ -119,7 +118,7 @@ import {
       category: "bag",
       image: "https://themewagon.github.io/cozastore/images/product-05.jpg",
       favourite: false,
-      bag: true
+      bag: false
     },
     {
       id: 6,

@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Product } from '../../model/product.model';
 import { selectBagItems } from '../../Store/product/product.selectors';
+import { removeFromBag } from '../../Store/product/product.actions';
 
 @Component({
   selector: 'app-cart-details',
@@ -41,4 +42,7 @@ export class CartDetailsComponent implements OnInit {
     this.activeModal.dismiss();
   }
 
+  removeFromCart(item: Product) {
+    this.store.dispatch(removeFromBag({ productId: item.id }));
+  }
 }

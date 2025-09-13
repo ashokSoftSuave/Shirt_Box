@@ -1,32 +1,47 @@
-<div class="d-flex flex-column justify-content-between m-4" style="height:85%;">
-    <div class="cart-header d-flex justify-content-between align-items-center mb-3 p-4">
-        <h5 class="mb-0">Your Cart</h5>
-        <button type="button" class="btn-close shadow-none" (click)="close()"></button>
-    </div>
+<div class="d-flex flex-column justify-content-between m-4" style="height: 85%">
+  <div
+    class="cart-header d-flex justify-content-between align-items-center mb-3 p-4"
+  >
+    <h5 class="mb-0">Your Cart</h5>
+    <button
+      type="button"
+      class="btn-close shadow-none"
+      (click)="close()"
+    ></button>
+  </div>
 
-    <div class="cart-items flex-grow-1 overflow-auto mb-3">
-        <ul class="list-unstyled mb-0">
-            <li class="cart-item d-flex mb-3 align-items-center" *ngFor="let item of cartItems">
-                <div class="cart-item-img me-3">
-                    <img [src]="item.image" [alt]="item.productName" />
-                </div>
-                <div class="cart-item-info">
-                    <span class="d-block fw-semibold text-dark mb-1">
-                        {{ item.productName }}
-                    </span>
-                    <span class="text-muted small">{{ item.qty }} x {{ item.price | currency }}</span>
-                </div>
-            </li>
-        </ul>
-    </div>
+  <div class="cart-items flex-grow-1 overflow-auto mb-3">
+    <ul class="list-unstyled mb-0">
+      <li
+        class="cart-item d-flex mb-3 align-items-center"
+        *ngFor="let item of cartItems"
+      >
+        <div class="cart-item-img me-3">
+          <img [src]="item.image" [alt]="item.productName" />
+        </div>
+        <div class="cart-item-info flex-grow-1">
+          <span class="d-block fw-semibold text-dark mb-1">
+            {{ item.productName }}
+          </span>
+          <span class="text-muted small"
+            >{{ item.qty }} x {{ item.price | currency }}</span
+          >
+        </div>
+        <button
+          class="btn btn-link text-danger p-0 ms-2"
+          title="Remove from bag"
+        (click)="removeFromCart(item)"
+        >
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
 
-    <div class="cart-total fw-bold mb-3">
-        Total: {{ getTotal() | currency }}
-    </div>
+  <div class="cart-total fw-bold mb-3">Total: {{ getTotal() | currency }}</div>
 
-    <div class="cart-buttons d-flex">
-        <a routerLink="/cart" class="btn btn-dark flex-fill me-2">View Cart</a>
-        <a routerLink="/checkout" class="btn btn-primary flex-fill">Check Out</a>
-    </div>
-
+  <div class="cart-buttons d-flex">
+    <a routerLink="/cart" class="btn btn-dark flex-fill me-2">View Cart</a>
+    <a routerLink="/checkout" class="btn btn-primary flex-fill">Check Out</a>
+  </div>
 </div>
