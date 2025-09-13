@@ -1,0 +1,19 @@
+
+
+.contact-banner {
+  height: 250px;
+  background: url("https://themewagon.github.io/cozastore/images/bg-01.jpg")
+    center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 30px;
+  border-radius: 8px;
+}
