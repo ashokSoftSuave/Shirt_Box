@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { productDetails } from './home/home.component';
+import { Product } from '../model/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -7,13 +7,13 @@ import { productDetails } from './home/home.component';
 export class CardDetailsService {
 
   constructor() { }
-  cardProductList : productDetails[] = [];
+  cardProductList : Product[] = [];
 
   getCardDetails() {
     return this.cardProductList;
   }
 
-  setCardDetails(product: productDetails) {
+  setCardDetails(product: Product) {
     this.cardProductList.push(product);
   }
 }
