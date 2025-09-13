@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { CardDetailsService } from '../card-details.service';
 import { FormsModule } from '@angular/forms';
+import { addToBag } from '../../Store/product/product.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-quickview',
@@ -14,7 +15,7 @@ export class QuickviewComponent {
 
   constructor(
     public activeModal: NgbActiveModal,
-    private cardDetailsService: CardDetailsService
+    private store: Store
   ) { }
 
   @Input() product: any;
@@ -40,7 +41,7 @@ export class QuickviewComponent {
     if (!this.selectedSize || !this.selectedColor) {
       return;
     }
-    this.cardDetailsService.setCardDetails({ ...this.product, quantity: this.quantity, size: this.selectedSize, color: this.selectedColor });
+    this.store.dispatch(addToBag({ productId: this.product.id, qty: this.quantity }));
     this.successMessage = `Product ${this.product.productName} added successfully!`;
     this.showSuccessPopup = true;
   }

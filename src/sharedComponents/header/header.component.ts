@@ -4,7 +4,7 @@ import { CartDetailsComponent } from '../../components/cart-details/cart-details
 import { Store } from '@ngrx/store';
 import { Product } from '../../model/product.model';
 import { Observable } from 'rxjs';
-import { whishlistcount } from '../../Store/product/product.selectors';
+import { bagcount, whishlistcount } from '../../Store/product/product.selectors';
 import { showWishlist, hideWishlist } from '../../Store/product/product.actions';
 @Component({
   selector: 'app-header',
@@ -16,14 +16,17 @@ export class HeaderComponent implements OnInit {
   cartItemCount = 4;
   wishlistCount = 0;
   wishlist$: Observable<number>;
+  bagCount$: Observable<number>;
   wishlistActive = false;
 
   constructor(private modalService: NgbModal, private store: Store) {
     this.wishlist$ = this.store.select(whishlistcount);
+    this.bagCount$ = this.store.select(bagcount); 
   }
 
   ngOnInit(): void {
     this.wishlist$.subscribe(count => this.wishlistCount = count);
+    this.bagCount$.subscribe(count => this.cartItemCount = count);
   }
 
   openWishlist() {

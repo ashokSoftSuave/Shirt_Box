@@ -8,11 +8,11 @@
         <ul class="list-unstyled mb-0">
             <li class="cart-item d-flex mb-3 align-items-center" *ngFor="let item of cartItems">
                 <div class="cart-item-img me-3">
-                    <img [src]="item.img" [alt]="item.name" />
+                    <img [src]="item.image" [alt]="item.productName" />
                 </div>
                 <div class="cart-item-info">
                     <span class="d-block fw-semibold text-dark mb-1">
-                        {{ item.name }}
+                        {{ item.productName }}
                     </span>
                     <span class="text-muted small">{{ item.qty }} x {{ item.price | currency }}</span>
                 </div>

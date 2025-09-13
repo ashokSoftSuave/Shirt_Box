@@ -45,5 +45,14 @@ export const toggleFavorite = createAction(
   props<{ productId: number }>()
 );
 
+export const addToBag = createAction(
+  '[Product] Add To Bag',
+  props<{ productId: number, qty: number }>()
+);
+
+export const removeFromBag = createAction(
+  '[Product] Remove From Bag',
+  props<{ productId: number, qty: number }>()
+);
 
 export const clearFilters = createAction('[Product] Clear Filters');

@@ -75,22 +75,24 @@ import {
 
     ngOnInit(): void {
       // Instead of hardcoding, you can fetch from API later
-  const sampleProducts: Product[] = [
+   const sampleProducts: Product[] = [
     {
       id: 1,
       productName: "Esprit Ruffle Shirt",
       price: 16.64,
       category: "women",
       image: "https://themewagon.github.io/cozastore/images/product-01.jpg",
-      favourite: false
+      favourite: false,
+      bag: false
     },
     {
       id: 2,
-      productName: "Herschel supply",
-      price: 35.31,
-      category: "women",
+      productName: "Herschel Supply Backpack",
+      price: 49.99,
+      category: "bag",
       image: "https://themewagon.github.io/cozastore/images/product-02.jpg",
-      favourite: false
+      favourite: false,
+      bag: true
     },
     {
       id: 3,
@@ -98,7 +100,8 @@ import {
       price: 25.50,
       category: "men",
       image: "https://themewagon.github.io/cozastore/images/product-03.jpg",
-      favourite: false
+      favourite: false,
+      bag: false
     },
     {
       id: 4,
@@ -106,39 +109,44 @@ import {
       price: 34.75,
       category: "women",
       image: "https://themewagon.github.io/cozastore/images/product-04.jpg",
-      favourite: false
+      favourite: false,
+      bag: false
     },
     {
       id: 5,
-      productName: "Vintage Inspired Classic",
-      price: 93.20,
-      category: "women",
+      productName: "Classic Leather Bag",
+      price: 120.00,
+      category: "bag",
       image: "https://themewagon.github.io/cozastore/images/product-05.jpg",
-      favourite: false
+      favourite: false,
+      bag: true
     },
     {
       id: 6,
-      productName: "Vintage Inspired Classic",
+      productName: "Vintage Watch",
       price: 93.20,
       category: "watch",
       image: "https://themewagon.github.io/cozastore/images/product-06.jpg",
-      favourite: false
+      favourite: false,
+      bag: false
     },
     {
       id: 7,
       productName: "Shirt in Stretch Cotton",
       price: 52.66,
-      category: "women",
+      category: "men",
       image: "https://themewagon.github.io/cozastore/images/product-07.jpg",
-      favourite: false
+      favourite: false,
+      bag: false
     },
     {
       id: 8,
-      productName: "Pieces Metallic Printed",
+      productName: "Pieces Metallic Printed Dress",
       price: 18.96,
       category: "women",
       image: "https://themewagon.github.io/cozastore/images/product-08.jpg",
-      favourite: false
+      favourite: false,
+      bag: false
     },
     {
       id: 9,
@@ -146,7 +154,8 @@ import {
       price: 75.00,
       category: "shoes",
       image: "https://themewagon.github.io/cozastore/images/product-09.jpg",
-      favourite: false
+      favourite: false,
+      bag: false
     },
     {
       id: 10,
@@ -154,23 +163,26 @@ import {
       price: 25.85,
       category: "women",
       image: "https://themewagon.github.io/cozastore/images/product-10.jpg",
-      favourite: false
+      favourite: false,
+      bag: false
     },
     {
       id: 11,
-      productName: "Herschel supply",
+      productName: "Men's Leather Belt",
       price: 63.16,
       category: "men",
       image: "https://themewagon.github.io/cozastore/images/product-11.jpg",
-      favourite: false
+      favourite: false,
+      bag: false
     },
     {
       id: 12,
-      productName: "Herschel supply belt",
+      productName: "Herschel Supply Belt",
       price: 50.00,
       category: "men",
       image: "https://themewagon.github.io/cozastore/images/product-12.jpg",
-      favourite: false
+      favourite: false,
+      bag: false
     },
     {
       id: 13,
@@ -178,15 +190,17 @@ import {
       price: 86.85,
       category: "women",
       image: "https://themewagon.github.io/cozastore/images/product-13.jpg",
-      favourite: false
+      favourite: false,
+      bag: false
     },
     {
       id: 14,
-      productName: "Pretty Little Thing",
+      productName: "Pretty Little Thing Coat",
       price: 54.79,
       category: "women",
       image: "https://themewagon.github.io/cozastore/images/product-14.jpg",
-      favourite: false
+      favourite: false,
+      bag: false
     },
     {
       id: 15,
@@ -194,15 +208,17 @@ import {
       price: 86.85,
       category: "watch",
       image: "https://themewagon.github.io/cozastore/images/product-15.jpg",
-      favourite: false
+      favourite: false,
+      bag: false
     },
     {
       id: 16,
-      productName: "Square Neck Back",
+      productName: "Square Neck Back Dress",
       price: 29.64,
       category: "women",
       image: "https://themewagon.github.io/cozastore/images/product-16.jpg",
-      favourite: false
+      favourite: false,
+      bag: false
     }
   ];
 

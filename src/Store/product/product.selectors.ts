@@ -118,4 +118,19 @@ export const whishlistcount = createSelector(
     let result = products.filter(p => p.favourite).length;
     return result;
   }
+  
 );
+
+
+export const bagcount = createSelector(
+  selectAllProducts,
+  (products) => { 
+    let result = products.filter(p => p.bag).length;
+    return result;
+  }
+);
+
+export const selectBagItems = createSelector(
+  selectAllProducts,
+  (products) => products.filter(p => p.bag)
+);  

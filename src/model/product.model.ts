@@ -5,4 +5,6 @@ export interface Product {
   category: string;
   image: string;
   favourite?: boolean;
+  bag: boolean;
+  qty?: number; // Optional: quantity for cart
 }

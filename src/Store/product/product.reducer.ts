@@ -12,7 +12,9 @@ import {
   SortByType,
   toggleFavorite,
   showWishlist,
-  hideWishlist
+  hideWishlist,
+  addToBag,
+  removeFromBag
 } from './product.actions';
 
 export interface ProductState {
@@ -63,4 +65,16 @@ export const productReducer = createReducer(
   }),
   on(showWishlist, (s) => ({ ...s, showWishlist: true })),
   on(hideWishlist, (s) => ({ ...s, showWishlist: false })),
+  on(addToBag, (s, { productId, qty }) => {
+    const updatedProducts = s.products.map(product =>
+      product.id === productId ? { ...product, bag: true, qty } : product
+    );
+    return { ...s, products: updatedProducts };
+  }),
+  on(removeFromBag, (s, { productId }) => {
+    const updatedProducts = s.products.map(product =>
+      product.id === productId ? { ...product, bag: false, qty: 0 } : product
+    );
+    return { ...s, products: updatedProducts };
+  })  
 );
