@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { CommonModule } from '@angular/common';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 export interface productDetails{
   productName:string;
@@ -14,9 +15,26 @@ export interface productDetails{
 
 @Component({
   selector: 'app-home',
-  imports: [ProductCardComponent,CommonModule],
+  imports: [ProductCardComponent, CommonModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
+  animations: [
+    trigger('productAnimation', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.9)' }),
+        animate(
+          '300ms ease-out',
+          style({ opacity: 1, transform: 'scale(1)' })
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '200ms ease-in',
+          style({ opacity: 0, transform: 'scale(0.9)' })
+        ),
+      ]),
+    ]),
+  ],
 })
 export class HomeComponent {
   products:productDetails[]=[
@@ -118,5 +136,19 @@ export class HomeComponent {
   }
 ]
 
+ selectedCategory: string = 'all';
+
+  get filteredProducts() {
+    if (this.selectedCategory === 'all') {
+      return this.products;
+    }
+    return this.products.filter(
+      (p) => p.category.toLowerCase() === this.selectedCategory.toLowerCase()
+    );
+  }
+
+  filterProducts(category: string) {
+    this.selectedCategory = category;
+  }
 
 }

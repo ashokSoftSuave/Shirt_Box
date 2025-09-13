@@ -1,31 +1,56 @@
-<main class="container mt-3">
-    <!-- Filters -->
-    <div class="filters d-flex justify-content-between align-items-center mb-4">
-        <!-- Left Navigation -->
-        <div class="nav-links d-flex gap-3">
-            <a href="#" class="active">All Products</a>
-            <a href="#">Women</a>
-            <a href="#">Men</a>
-            <a href="#">Bag</a>
-            <a href="#">Shoes</a>
-            <a href="#">Watches</a>
-        </div>
-
-        <!-- Right Buttons -->
-        <div class="d-flex gap-2">
-            <button class="btn btn-outline-secondary btn-sm">
-                <i class="bi bi-filter"></i> Filter
-            </button>
-            <button class="btn btn-outline-secondary btn-sm">
-                <i class="bi bi-search"></i> Search
-            </button>
-        </div>
+<main class="container mt-3 mb-4">
+  <!-- Filters -->
+  <div class="filters d-flex justify-content-between align-items-center mb-4">
+    <!-- Left Navigation -->
+    <div class="nav-links d-flex gap-3">
+      <span
+        [class.active]="selectedCategory === 'all'"
+        (click)="filterProducts('all')"
+        >All Products</span
+      >
+      <span
+        [class.active]="selectedCategory === 'women'"
+        (click)="filterProducts('women')"
+        >Women</span
+      >
+      <span
+        [class.active]="selectedCategory === 'men'"
+        (click)="filterProducts('men')"
+        >Men</span
+      >
+      <span
+        [class.active]="selectedCategory === 'bag'"
+        (click)="filterProducts('bag')"
+        >Bag</span
+      >
+      <span
+        [class.active]="selectedCategory === 'shoes'"
+        (click)="filterProducts('shoes')"
+        >Shoes</span
+      >
+      <span
+        [class.active]="selectedCategory === 'watch'"
+        (click)="filterProducts('watch')"
+        >Watches</span
+      >
     </div>
 
-    <!-- Product Grid -->
-    <div class="d-flex flex-wrap align-items-center gap-5">
-        <div *ngFor="let product of products" style="width: 18rem;">
-            <app-product-card [products]="product"></app-product-card>
-        </div>
+    <!-- Right Buttons -->
+    <div class="d-flex gap-2">
+      <button class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-filter"></i> Filter
+      </button>
+      <button class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-search"></i> Search
+      </button>
     </div>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="d-flex flex-wrap align-items-center gap-5">
+    <div *ngFor="let product of filteredProducts" style="width: 18rem"
+     [@productAnimation]>
+      <app-product-card [products]="product"></app-product-card>
+    </div>
+  </div>
 </main>
