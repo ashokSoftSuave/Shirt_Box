@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { productDetails } from '../home/home.component';
+import { Product } from '../../model/product.model';
 
 @Component({
   selector: 'app-product-card',
@@ -11,7 +11,7 @@ import { productDetails } from '../home/home.component';
 export class ProductCardComponent { 
   public isFavorite : boolean = false;
   public isMouseOver : boolean = false;
-  @Input() products!: productDetails;
+  @Input() products!: Product;
 
 
   toggleFavorite() {

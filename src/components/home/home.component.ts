@@ -2,13 +2,11 @@ import { Component } from '@angular/core';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
-
-export interface productDetails{
-  productName:string;
-  price:number;
-  category:string;
-  image:string;
-}
+import { Product } from '../../model/product.model';
+import { Observable } from 'rxjs';
+import { selectFilteredProducts, selectSelectedCategory } from '../../Store/product/product.selectors';
+import { Store } from '@ngrx/store';
+import { loadProducts, setCategoryFilter } from '../../Store/product/product.actions';
 
 @Component({
   selector: 'app-home',
@@ -34,7 +32,17 @@ export interface productDetails{
   ],
 })
 export class HomeComponent {
-  products:productDetails[]=[
+ products$: Observable<Product[]>;
+ selectedCategory$: Observable<string>;
+
+  constructor(private store: Store) {
+    this.products$ = this.store.select(selectFilteredProducts);
+     this.selectedCategory$ = this.store.select(selectSelectedCategory);
+  }
+
+  ngOnInit(): void {
+    // Instead of hardcoding, you can fetch from API later
+    const sampleProducts: Product[] =[
   {
     "productName": "Esprit Ruffle Shirt",
     "price": 16.64,
@@ -131,21 +139,11 @@ export class HomeComponent {
     "category": "women",
     "image": "https://themewagon.github.io/cozastore/images/product-16.jpg"
   }
-]
-
- selectedCategory: string = 'all';
-
-  get filteredProducts() {
-    if (this.selectedCategory === 'all') {
-      return this.products;
-    }
-    return this.products.filter(
-      (p) => p.category.toLowerCase() === this.selectedCategory.toLowerCase()
-    );
+];
+    this.store.dispatch(loadProducts({ products: sampleProducts }));
   }
 
   filterProducts(category: string) {
-    this.selectedCategory = category;
+    this.store.dispatch(setCategoryFilter({ category }));
   }
-
 }

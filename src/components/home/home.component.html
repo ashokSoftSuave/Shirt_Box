@@ -4,35 +4,46 @@
     <!-- Left Navigation -->
     <div class="nav-links d-flex gap-3">
       <span
-        [class.active]="selectedCategory === 'all'"
+        [class.active]="(selectedCategory$ | async) === 'all'"
         (click)="filterProducts('all')"
-        >All Products</span
       >
+        All Products
+      </span>
+
       <span
-        [class.active]="selectedCategory === 'women'"
+        [class.active]="(selectedCategory$ | async) === 'women'"
         (click)="filterProducts('women')"
-        >Women</span
       >
+        Women
+      </span>
+
       <span
-        [class.active]="selectedCategory === 'men'"
+        [class.active]="(selectedCategory$ | async) === 'men'"
         (click)="filterProducts('men')"
-        >Men</span
       >
+        Men
+      </span>
+
       <span
-        [class.active]="selectedCategory === 'bag'"
+        [class.active]="(selectedCategory$ | async) === 'bag'"
         (click)="filterProducts('bag')"
-        >Bag</span
       >
+        Bag
+      </span>
+
       <span
-        [class.active]="selectedCategory === 'shoes'"
+        [class.active]="(selectedCategory$ | async) === 'shoes'"
         (click)="filterProducts('shoes')"
-        >Shoes</span
       >
+        Shoes
+      </span>
+
       <span
-        [class.active]="selectedCategory === 'watch'"
+        [class.active]="(selectedCategory$ | async) === 'watch'"
         (click)="filterProducts('watch')"
-        >Watches</span
       >
+        Watches
+      </span>
     </div>
 
     <!-- Right Buttons -->
@@ -48,8 +59,11 @@
 
   <!-- Product Grid -->
   <div class="d-flex flex-wrap align-items-center gap-5">
-    <div *ngFor="let product of filteredProducts" style="width: 18rem"
-     [@productAnimation]>
+    <div
+      *ngFor="let product of products$ | async"
+      style="width: 18rem"
+      [@productAnimation]
+    >
       <app-product-card [products]="product"></app-product-card>
     </div>
   </div>
