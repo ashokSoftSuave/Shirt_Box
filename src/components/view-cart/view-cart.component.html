@@ -22,7 +22,7 @@
                                         <img [src]="item.image" alt="product" class="img-fluid rounded"
                                             style="width: 60px; height: 60px; object-fit: cover;" />
                                     </td>
-                                    <td class="fw-semibold">{{ item.name }}</td>
+                                    <td class="fw-semibold">{{ item.productName }}</td>
                                     <td>${{ item.price }}</td>
                                     <td>
                                         <div class="input-group input-group-sm justify-content-center"
@@ -32,14 +32,14 @@
                                                 −
                                             </button>
                                             <input type="number" class="form-control text-center"
-                                                [(ngModel)]="item.quantity" min="1" />
+                                                [(ngModel)]="item.qty" min="1" />
                                             <button class="btn btn-outline-secondary" type="button"
                                                 (click)="increaseQuantity(item)">
                                                 +
                                             </button>
                                         </div>
                                     </td>
-                                    <td class="fw-bold">${{ item.price * item.quantity }}</td>
+                                    <td class="fw-bold" *ngIf="item.qty">${{ item.price * item.qty }}</td>
                                 </tr>
                             </tbody>
                         </table>

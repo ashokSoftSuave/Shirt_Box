@@ -1,3 +1,17 @@
+export const incrementBagQty = createAction(
+  '[Product] Increment Bag Qty',
+  props<{ productId: number }>()
+);
+
+export const decrementBagQty = createAction(
+  '[Product] Decrement Bag Qty',
+  props<{ productId: number }>()
+);
+
+export const setBagQty = createAction(
+  '[Product] Set Bag Qty',
+  props<{ productId: number, qty: number }>()
+);
 export const showWishlist = createAction('[Product] Show Wishlist');
 export const hideWishlist = createAction('[Product] Hide Wishlist');
 import { createAction, props } from '@ngrx/store';

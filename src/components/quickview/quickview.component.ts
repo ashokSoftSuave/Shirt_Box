@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { addToBag } from '../../Store/product/product.actions';
+import { addToBag, incrementBagQty, decrementBagQty } from '../../Store/product/product.actions';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -27,11 +27,21 @@ export class QuickviewComponent {
   quantity = 1;
 
   increment() {
-    this.quantity++;
+    if (this.product && this.product.bag) {
+      this.store.dispatch(incrementBagQty({ productId: this.product.id }));
+    } else {
+      this.quantity++;
+    }
   }
 
   decrement() {
-    if (this.quantity > 1) this.quantity--;
+    if (this.product && this.product.bag) {
+      if ((this.product.qty ?? 1) > 1) {
+        this.store.dispatch(decrementBagQty({ productId: this.product.id }));
+      }
+    } else {
+      if (this.quantity > 1) this.quantity--;
+    }
   }
 
   addToCart(sizeRef: any, colorRef: any) {

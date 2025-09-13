@@ -1,7 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CartTotalsComponent } from '../cart-totals/cart-totals.component';
+import { Observable } from 'rxjs';
+import { Product } from '../../model/product.model';
+import { Store } from '@ngrx/store';
+import { selectBagItems } from '../../Store/product/product.selectors';
+import { incrementBagQty, decrementBagQty } from '../../Store/product/product.actions';
 
 @Component({
   selector: 'app-view-cart',
@@ -9,31 +14,27 @@ import { CartTotalsComponent } from '../cart-totals/cart-totals.component';
   templateUrl: './view-cart.component.html',
   styleUrl: './view-cart.component.scss'
 })
-export class ViewCartComponent {
-  cartItems = [
-    {
-      name: 'Fresh Strawberries',
-      price: 36,
-      quantity: 1,
-      image: 'https://themewagon.github.io/cozastore/images/item-cart-04.jpg',
-    },
-    {
-      name: 'Lightweight Jacket',
-      price: 16,
-      quantity: 1,
-      image: 'https://themewagon.github.io/cozastore/images/item-cart-05.jpg',
-    },
-  ];
+export class ViewCartComponent implements OnInit {
+  cartItems$!: Observable<Product[]>;
+  cartItems: Product[] = [];
 
   couponCode: string = '';
+  constructor(private store: Store) {}
 
-  increaseQuantity(item: any) {
-    item.quantity++;
+  ngOnInit(): void {
+    this.cartItems$ = this.store.select(selectBagItems);
+    this.cartItems$.subscribe(items => {
+      this.cartItems = items;
+    });
   }
 
-  decreaseQuantity(item: any) {
-    if (item.quantity > 1) {
-      item.quantity--;
+  increaseQuantity(item: Product) {
+    this.store.dispatch(incrementBagQty({ productId: item.id }));
+  }
+
+  decreaseQuantity(item: Product) {
+    if ((item.qty ?? 1) > 1) {
+      this.store.dispatch(decrementBagQty({ productId: item.id }));
     }
   }
 

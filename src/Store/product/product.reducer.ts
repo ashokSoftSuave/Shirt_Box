@@ -14,7 +14,10 @@ import {
   showWishlist,
   hideWishlist,
   addToBag,
-  removeFromBag
+  removeFromBag,
+  incrementBagQty,
+  decrementBagQty,
+  setBagQty
 } from './product.actions';
 
 export interface ProductState {
@@ -76,5 +79,29 @@ export const productReducer = createReducer(
       product.id === productId ? { ...product, bag: false, qty: 0 } : product
     );
     return { ...s, products: updatedProducts };
-  })  
+  }),
+  on(incrementBagQty, (s, { productId }) => {
+    const updatedProducts = s.products.map(product =>
+      product.id === productId && product.bag
+        ? { ...product, qty: (product.qty ?? 1) + 1 }
+        : product
+    );
+    return { ...s, products: updatedProducts };
+  }),
+  on(decrementBagQty, (s, { productId }) => {
+    const updatedProducts = s.products.map(product =>
+      product.id === productId && product.bag && (product.qty ?? 1) > 1
+        ? { ...product, qty: (product.qty ?? 1) - 1 }
+        : product
+    );
+    return { ...s, products: updatedProducts };
+  }),
+  on(setBagQty, (s, { productId, qty }) => {
+    const updatedProducts = s.products.map(product =>
+      product.id === productId && product.bag
+        ? { ...product, qty }
+        : product
+    );
+    return { ...s, products: updatedProducts };
+  })
 );
