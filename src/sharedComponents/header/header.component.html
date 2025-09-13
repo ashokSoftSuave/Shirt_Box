@@ -64,7 +64,12 @@
         type="button"
         (click)="openWishlist()"
       >
-        <i class="far fa-heart fs-5"></i>
+        <ng-container *ngIf="wishlistActive; else normalHeart">
+          <i class="fas fa-heart fs-5" style="color: #1976d2"></i>
+        </ng-container>
+        <ng-template #normalHeart>
+          <i class="far fa-heart fs-5"></i>
+        </ng-template>
         <span
           class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"
           style="font-size: 0.7rem"

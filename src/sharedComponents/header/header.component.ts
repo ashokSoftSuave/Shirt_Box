@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CartDetailsComponent } from '../../components/cart-details/cart-details.component';
 import { Store } from '@ngrx/store';
@@ -8,7 +9,7 @@ import { bagcount, whishlistcount } from '../../Store/product/product.selectors'
 import { showWishlist, hideWishlist } from '../../Store/product/product.actions';
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
