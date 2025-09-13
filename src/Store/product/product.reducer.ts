@@ -10,6 +10,8 @@ import {
   setSortBy,
   clearFilters,
   SortByType,
+  toggleFavorite,
+  showLikedItems,
 } from './product.actions';
 
 export interface ProductState {
@@ -49,5 +51,15 @@ export const productReducer = createReducer(
     color: null,
     tag: null,
     sortBy: 'default'as const ,
-  }))
+  })),
+  on(toggleFavorite, (s, { productId }) => {
+    const updatedProducts = s.products.map(product =>
+      product.id === productId ? { ...product, favourite: !product.favourite } : product
+    );
+    return { ...s, products: updatedProducts };
+  }),
+  on(showLikedItems, (s) => {
+    const likedProducts = s.products.filter(product => product.favourite);
+    return { ...s, products: likedProducts };
+  })
 );

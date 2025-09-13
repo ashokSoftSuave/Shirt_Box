@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Product } from '../../model/product.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { QuickviewComponent } from '../quickview/quickview.component'; 
+import { Store } from '@ngrx/store';
+import { toggleFavorite } from '../../Store/product/product.actions';
 
 
 @Component({
@@ -12,14 +14,15 @@ import { QuickviewComponent } from '../quickview/quickview.component';
   styleUrl: './product-card.component.scss'
 })
 export class ProductCardComponent { 
-  public isFavorite : boolean = false;
   public isMouseOver : boolean = false;
   @Input() products!: Product;
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal,
+    private store: Store
+  ) {}
 
 
   toggleFavorite() {
-    this.isFavorite = !this.isFavorite;
+    this.store.dispatch(toggleFavorite({ productId: this.products.id }));
   }
 
   openQuickView(product: Product) {

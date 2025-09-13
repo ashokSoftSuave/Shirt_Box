@@ -38,4 +38,13 @@ export const setSortBy = createAction(
   props<{ sortBy: SortByType }>()
 );
 
+export const toggleFavorite = createAction(
+  '[Product] Toggle Favorite',
+  props<{ productId: number }>()
+);
+
+export const showLikedItems = createAction(
+  '[Product] Show Liked Items'
+);
+
 export const clearFilters = createAction('[Product] Clear Filters');

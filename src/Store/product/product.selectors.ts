@@ -38,6 +38,17 @@ export const selectSortBy = createSelector(
   (s) => s.sortBy
 );
 
+// Wishlist selectors
+export const selectWishlist = createSelector(
+  selectAllProducts,
+  (products) => products.filter(p => p.favourite)
+);
+
+export const selectIsProductFavorite = (productId: number) => createSelector(
+  selectAllProducts,
+  (products) => !!products.find(p => p.id === productId && p.favourite)
+);
+
 export const selectFilteredProducts = createSelector(
   selectAllProducts,
   selectSelectedCategory,

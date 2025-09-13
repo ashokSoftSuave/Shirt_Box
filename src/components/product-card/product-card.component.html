@@ -21,7 +21,7 @@
 
     <!-- Favorite Icon -->
     <div class="position-relative" (click)="toggleFavorite()" (mouseenter)="isMouseOver = true" (mouseleave)="isMouseOver=false" style="cursor: pointer;">
-      <ng-container *ngIf="isFavorite || isMouseOver; else defaultHeart">
+      <ng-container *ngIf="products.favourite || isMouseOver; else defaultHeart">
         <img src="https://themewagon.github.io/cozastore/images/icons/icon-heart-02.png" alt="heart" width="24" />
       </ng-container>
       <ng-template #defaultHeart>
