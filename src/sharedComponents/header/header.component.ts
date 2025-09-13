@@ -5,7 +5,6 @@ import { Store } from '@ngrx/store';
 import { Product } from '../../model/product.model';
 import { Observable } from 'rxjs';
 import { selectWishlist } from '../../Store/product/product.selectors';
-import { WishlistModalComponent } from './wishlist-modal.component';
 @Component({
   selector: 'app-header',
   imports: [],
@@ -23,11 +22,7 @@ export class HeaderComponent {
   }
 
   openWishlist() {
-    this.modalService.open(WishlistModalComponent, {
-      backdrop: true,
-      scrollable: true,
-      windowClass: 'wishlist-modal-window'
-    });
+
   }
 
 
