@@ -41,7 +41,7 @@ export class QuickviewComponent {
       return;
     }
     this.cardDetailsService.setCardDetails({ ...this.product, quantity: this.quantity, size: this.selectedSize, colur: this.selectedColor });
-    this.successMessage = `Product "${this.product.productName} added successfully!`;
+    this.successMessage = `Product ${this.product.productName} added successfully!`;
     this.showSuccessPopup = true;
     setTimeout(() => {
     this.showSuccessPopup = false;
