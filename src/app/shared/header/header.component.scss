@@ -1,0 +1,15 @@
+.header-acc, a {
+    color: #b2b2b2;
+}
+
+/* Make nav links wrap on small screens */
+.nav {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.active-link {
+  font-weight: bold;
+  color: #0d6efd; /* Bootstrap primary color */
+  border-bottom: 2px solid #0d6efd; /* optional underline */
+}

@@ -1,0 +1,25 @@
+/* Default button color */
+.btn-light {
+  background-color: #f8f9fa;
+  color: #212529;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* When button is enabled */
+.btn-light:enabled {
+  background-color: #007bff; /* Change to your desired color */
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Optional: when hovered */
+.btn-light:enabled:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Disabled state (Bootstrap handles this, but you can customize) */
+.btn-light:disabled {
+  background-color: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
+}

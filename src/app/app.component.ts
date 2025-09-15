@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FooterComponent } from '../shared/footer/footer.component';
-import { HeaderComponent } from '../shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { HeaderComponent } from './shared/header/header.component';
+
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,5 @@ import { HeaderComponent } from '../shared/header/header.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'ShirtBox';
+  title = 'LUMA STORE';
 }
